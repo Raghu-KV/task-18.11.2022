@@ -1,24 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { useState } from "react";
+import { NavBar } from "./NavBar";
+import { Header } from "./Header";
+import { ContainerRow } from "./ContainerRow";
 function App() {
+  const [addCart, setAddCart] = useState(0);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <NavBar add={addCart} />
+      <Header />
+      <ContainerRow
+        plus={() => setAddCart((prv) => prv + 1)}
+        minus={() => setAddCart((prv) => prv - 1)}
+        value={addCart}
+      />
+    </>
   );
 }
 
